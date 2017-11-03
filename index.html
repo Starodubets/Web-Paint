@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Paint</title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="svgcss.css">
+	<script src="simpleFigure.js"></script>
+    <script src="FigureWithText.js"></script>
+    <<script src="FigureWithPicture.js"></script>
+	<script src="mainScript.js"></script>
+	<script src="paint.js" defer></script>
+</head>
+<body>
+
+<div class="container-fluid">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myMenuBar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!--<a class="navbar-brand" href="#">Paint</a>-->
+			</div>
+			<div class="collapse navbar-collapse" id="myMenuBar">
+				<ul class="nav navbar-nav">
+					
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" id="mFile">File</a>
+						<ul class="dropdown-menu">
+							<li onclick="Alertt()"><a id="mSave">Save</a></li>
+							<li><a id="mOpen">Open</a></li>
+						</ul>
+					</li>
+					
+					<!--<li class="dropdown disabled">-->
+					<li class="dropdown">
+						<!--<a class="dropdown-toggle disabled" data-toggle="dropdown" href="#">Edit</a>-->
+						<a class="dropdown-toggle" data-toggle="dropdown" id="mEditFigure">Edit figure</a>
+							<!--<li class="dropdown-submenu">-->
+						<ul class="dropdown-menu" id="editSubMenu">
+								<!--<a class="subMenuHeader">Figure<span class="caret"></span></a>-->
+								<!--<ul class="dropdown-menu">-->
+									<!--<li class="dropdown-submenu"><a class="subMenuHeader">Type<span-->
+											<!--class="caret"></span></a>-->
+										<!--<ul class="dropdown-menu">-->
+											<!--<li><a>Line</a></li>-->
+											<!--<li><a>Rectangle</a></li>-->
+											<!--<li><a>RRectangle</a></li>-->
+											<!--<!--<!--<!--<!--<li><a>Ellipse</a></li>-->
+										<!--</ul>-->
+									<!--</li>-->
+									<!--<li>-->
+										<!--<label style="padding: 0 20px">Color-->
+											<!--<input class="form-control" type="color" value="#563d7c"-->
+											       <!--style="display: inline-block">-->
+										<!--</label>-->
+									<!--</li>-->
+									<!--<li class="dropdown-submenu"><a class="subMenuHeader">Width<span-->
+											<!--class="caret"></span></a>-->
+										<!--<ul class="dropdown-menu">-->
+											<!--<li><a>1</a></li>-->
+											<!--<li><a>5</a></li>-->
+											<!--<li><a>10</a></li>-->
+											<!--<li><a>15</a></li>-->
+											<!--<li><a>20</a></li>-->-->-->-->-->
+										<!--</ul>-->
+									<!--</li>-->
+								<!--</ul>-->
+							<!--</li>-->
+						</ul>
+					</li>
+					
+                    <!--<li class="dropdown disabled">-->
+                    <li class="dropdown">
+                        <!--<a class="dropdown-toggle disabled" data-toggle="dropdown" href="#">Edit</a>-->
+                        <a class="dropdown-toggle" data-toggle="dropdown" id="mEditFigure">Edit figure</a>
+                        <!--<li class="dropdown-submenu">-->
+                        <ul class="dropdown-menu" id="editSubMenu">
+                            <!--<a class="subMenuHeader">Figure<span class="caret"></span></a>-->
+                            <!--<ul class="dropdown-menu">-->
+                            <!--<li class="dropdown-submenu"><a class="subMenuHeader">Type<span-->
+                            <!--class="caret"></span></a>-->
+                            <!--<ul class="dropdown-menu">-->
+                            <!--<li><a>Line</a></li>-->
+                            <!--<li><a>Rectangle</a></li>-->
+                            <!--<li><a>RRectangle</a></li>-->
+                            <!--<!--<!--<!--<!--<li><a>Ellipse</a></li>-->
+                            <!--</ul>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                            <!--<label style="padding: 0 20px">Color-->
+                            <!--<input class="form-control" type="color" value="#563d7c"-->
+                            <!--style="display: inline-block">-->
+                            <!--</label>-->
+                            <!--</li>-->
+                            <!--<li class="dropdown-submenu"><a class="subMenuHeader">Width<span-->
+                            <!--class="caret"></span></a>-->
+                            <!--<ul class="dropdown-menu">-->
+                            <!--<li><a>1</a></li>-->
+                            <!--<li><a>5</a></li>-->
+                            <!--<li><a>10</a></li>-->
+                            <!--<li><a>15</a></li>-->
+                            <!--<li><a>20</a></li>-->-->-->-->-->
+                            <!--</ul>-->
+                            <!--</li>-->
+                            <!--</ul>-->
+                            <!--</li>-->
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" id="mEditTab">Edit tab</a>
+                        <ul class="dropdown-menu">
+                            <li><a id="mAddTab">Add new tab</a></li>
+                            <li><a id="mDelTab">Remove tab</a></li>
+                            <li><a id="mRenTab">Rename tab</a></li>
+                        </ul>
+                    </li>
+					
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" id="mSwitchTab">Switch tab</a>
+						<ul class="dropdown-menu">
+                            <li><a id="mSwitchBtn">Switch tab</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" id="mPlugins">Plugins</a>
+						<ul class="dropdown-menu" id="pluginsSubMenu">
+							<!--<div class="checkbox">-->
+							<!--<label><input type="checkbox" value="" checked="checked">Simple Figure</label>-->
+							<!--</div>-->
+						</ul>
+					</li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" id="mCloud">Cloud</a>
+                        <ul class="dropdown-menu">
+                            <li><a id="mCloudSave">Save to cloud</a></li>
+                            <li><a id="mCloudOpen">Open from cloud</a></li>
+                        </ul>
+                    </li>
+					
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" id="mNetwork">Network</a>
+                        <ul class="dropdown-menu">
+                            <li><a id="mCloudSave">Open group session</a></li>
+                        </ul>
+                    </li>
+
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" id="mSettings">Settings</a>
+						<ul class="dropdown-menu">
+							<li class="dropdown-submenu">
+								<a class="subMenuHeader" href="#">Language<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Russian</a></li>
+									<li><a href="#">English</a></li>
+									<li><a href="#">Ukrainian</a></li>
+								</ul>
+							</li>
+							<li class="dropdown-submenu">
+								<a class="subMenuHeader" href="#">Skins<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Skin 1</a></li>
+									<li><a href="#">Skin 2</a></li>
+									<li><a href="#">Skin 3</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" id="mHelp">Help</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">FAQ</a></li>
+							<li><a href="#">About</a></li>
+						</ul>
+					</li>
+				
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myToolBar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="myToolBar">
+				<ul class="nav navbar-nav">
+					<li>
+						<label> File </label>
+						<button class="btn navbar-btn btn-default" id="tSave">
+							<span class="glyphicon glyphicon-floppy-save"></span>
+							<br/>
+							Save
+						</button>
+						<button class="btn navbar-btn btn-default" id="tLoad">
+							<span class="glyphicon glyphicon-download-alt"></span>
+							<br/>
+							Load
+						</button>
+						<span class="btn-separator"></span>
+					</li>
+					<li>
+						<label> Cloud </label>
+						<button class="btn navbar-btn btn-default" id="tSaveCloud">
+							<span class="glyphicon glyphicon-cloud-upload"></span>
+							<br/>
+							Save
+						</button>
+						<button class="btn navbar-btn btn-default" id="tLoadCloud">
+							<span class="glyphicon glyphicon-cloud-download"></span>
+							<br/>
+							Load
+						</button>
+					</li>
+					<li>
+						<label> Tab </label>
+						<button class="btn navbar-btn btn-default" id="tNew">
+							<span class="glyphicon glyphicon-plus"></span>
+							<br/>
+							New
+						</button>
+						<button class="btn navbar-btn btn-default" id="tDel">
+							<span class="glyphicon glyphicon-remove"></span>
+							<br/>
+							Del
+						</button>
+						<button class="btn navbar-btn btn-default" id="tReN">
+							<span class="glyphicon glyphicon-text-background"></span>
+							<br/>
+							ReN
+						</button>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	
+	<div class="row">
+		
+		<div class="col-sm-2">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">Figure Type</div>
+				<div id="leftToolBox">
+					<!--<div class="panel-body pluginElement">-->
+					<!--<button type="button" class="btn btn-primary btn-block pluginBtn">Simple figure</button>-->
+					<!--</div>-->
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-sm-8">
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#tab1">
+					<button class="close closeTab" type="button">×</button>
+					Tab 1</a></li>
+				<li><a data-toggle="tab" href="#tab2">
+					<button class="close closeTab" type="button">×</button>
+					Tab 2</a></li>
+				<li><a data-toggle="tab" href="#tab3">
+					<button class="close closeTab" type="button">×</button>
+					Tab 3</a></li>
+			</ul>
+			
+			<div class="tab-content">
+				<div id="tab1" class="tab-pane fade in active">
+										 
+						 	<svg id="SVG" width="100%" height="500px">
+				
+				</div>
+				<div id="tab2" class="tab-pane fade">
+					<h3>Tab 2</h3>
+					<p>Some content 2.</p>
+                    <svg id="SVG1" width="100%" height="500px">
+</div>
+				<div id="tab3" class="tab-pane fade">
+					<h3>Tab 3</h3>
+					<p>Some content 3.</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-sm-2">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">Properties</div>
+				<div id="rightToolBox">
+					<!--<div class="panel-body">-->
+						<!--<label>Type:</label>-->
+						<!--<div class="btn-group-vertical">-->
+							<!--<button type="button" class="btn btn-default">Line</button>-->
+							<!--<button type="button" class="btn btn-primary">Rectangle</button>-->
+							<!--<button type="button" class="btn btn-default">RRectangle</button>-->
+							<!--<button type="button" class="btn btn-default">Ellipse</button>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--<div class="panel-body">-->
+						<!--<label>Color</label>-->
+						<!--<input class="form-control" type="color" value="#563d7c" style="display: inline-block">-->
+					<!--</div>-->
+					<!--<div class="panel-body">-->
+						<!--<label>Width</label>-->
+						<!--<select class="form-control lineWidth">-->
+							<!--<option>1</option>-->
+							<!--<option>5</option>-->
+							<!--<option>10</option>-->
+							<!--<option>15</option>-->
+							<!--<option>20</option>-->
+						<!--</select>-->
+					<!--</div>-->
+				</div>
+			</div>
+		</div>
+	
+	</div>
+
+
+</div>
+
+</body>
+</html>
